@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="可移动悬浮按钮菜单">
+    <meta name="keywords" content="原生||js||移动端||px">
+    <meta name="author" content="Massiry">
+    <title></title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #menu_btn{
+            width: 10vw;
+            height: 10vw;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            bottom: 150px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+        }
+        #menu_btn .iconfont{
+            width: 8vw;
+            height: 8vw;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 8vw;
+            color: #ffffff;
+            font-size: 5vw;
+            display: none;
+        }
+        #menu_btn .icon-up-circle{
+            top: -10vw;
+            left: -1vw;
+        }
+        #menu_btn .icon-home{
+            top: -4vw;
+            left: -9vw;
+        }
+        #menu_btn .icon-detail{
+            top: 6vw;
+            left: -9vw;
+        }
+        #menu_btn .icon-user{
+            top: 13vw;
+            left: -1vw;
+        }
+
+        #menu_btn .icon-up-circle.menu-left{
+            left: 2.5vw;
+        }
+        #menu_btn .icon-home.menu-left{
+            left: 11vw;
+        }
+        #menu_btn .icon-detail.menu-left{
+            left: 11vw;
+        }
+        #menu_btn .icon-user.menu-left{
+            left: 2.5vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu_btn">
+        <i class="iconfont icon-up-circle"></i>
+        <i class="iconfont icon-home"></i>
+        <i class="iconfont icon-detail"></i>
+        <i class="iconfont icon-user"></i>
+    </div>
+</body>
+<script>
+    
+
+    ;(function (){
+        var menu_btn = document.getElementById("menu_btn");
+        moveTouch(menu_btn);
+        moveClick(menu_btn);
+        // menuClick(menu_btn);
+    })()
+
+    function moveTouch(e){
+        // 点击拖动，释放停止拖动
+        var moveStart, movIng, moveEnd;
+        var isEqt= !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent); //判断是pc还是移动端
+        if(isEqt){
+            moveStart="mousedown";
+            movIng="mousemove";
+            moveEnd="mouseup";
+        }else{
+            moveStart="touchstart";
+            movIng="touchmove";
+            moveEnd="touchend";
+        }
+
+        e.addEventListener(moveStart,function(){
+            //点击开启监听
+            document.addEventListener(movIng,test);
+        });
+
+        function test (event){
+            var ex,ey;
+            //获取移动时的坐标
+            if(isEqt){
+                ex=event.clientX;
+                ey=event.clientY;
+            }else{
+                ex=event.targetTouches[0].pageX;
+                ey=event.targetTouches[0].pageY;
+            }
+
+            // 动态改变元素的上，左的距离
+            e.style.left = ex - e.offsetWidth / 2 + "px";
+            e.style.top = ey - e.offsetHeight / 2 + "px";
+
+            // 控制元素不能超过可视范围,且有距离小于8px时吸附在边框上
+            if(e.offsetLeft<8){
+                e.style.left = 0 + "px";
+            }
+            if(e.offsetTop<8){
+                e.style.top = 0 + "px";
+            }
+            if(document.body.offsetWidth - e.offsetLeft - e.offsetWidth < 8){
+                e.style.left = document.body.offsetWidth - e.offsetWidth + "px";
+            }
+            if(window.innerHeight - e.offsetTop - e.offsetHeight < 8){
+                e.style.top = window.innerHeight - e.offsetHeight + "px";
+            }
+
+            if(e.offsetLeft<document.body.offsetWidth/2){
+                for (const key of e.getElementsByTagName('i')) {
+                    key.classList.add("menu-left")
+                }  
+            }else{
+                for (const key of e.getElementsByTagName('i')) {
+                    key.classList.remove("menu-left")
+                }  
+            }
+        }
+
+        e.addEventListener(moveEnd,function(){
+            //释放点击关闭监听
+            document.removeEventListener(movIng,test);
+        });
+    }
+
+    function moveClick(e){
+        //点击显示或关闭菜单
+        e.addEventListener("click",function(){
+            if(this.getElementsByTagName('i')[0].style.display == "block"){
+                for (const key of this.getElementsByTagName('i')) {
+                    key.style.display = "none";
+                }   
+            }else{
+                for (const key of this.getElementsByTagName('i')) {
+                    key.style.display = "block";
+                }  
+            }
+        });
+    }
+
+    // function menuClick(e){
+    //     //点击菜单的操作
+    //     for (const key of e.getElementsByTagName('i')) {
+    //         key.addEventListener("click",function(event){
+    //             event.stopPropagation();
+    //             event.preventDefault(); 
+    //         });
+    //     }  
+    // }
+</script>
+</html>

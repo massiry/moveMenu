@@ -1,0 +1,33 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1567047275481'); /* IE9 */
+  src: url('iconfont.eot?t=1567047275481#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARcAAsAAAAACTQAAAQNAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqFUIR4ATYCJAMUCwwABCAFhG0HShsGCMiOw8YZFeMqwv8SPNB75ZvMJM1Njqqg3G/NRUFtZX3Ji0L8k987V7MMksYdMCr0ee1PFkqo7IF09z/37rWxNLB57Vkucw/qpEXRBIrK1vhr6iD7kX4x+8PYxWW8DgFo8lAK0ch9/aAyCu2QAEQfvxJUjmlRJWSBrbByblWI+ZjYxkzjGsQ89/riI9vCBgNTop1s4rnT6fLt1LcX5IT/E+hgo+D1ZwaYu0ACpQAFYlCutQ85P1oKiZbW56kHobExMPpatujt3rcX/v+HULgiudb/4YHAQKJAWGjSaISvF1PwdqqJQMDbRQgMeLsXgYS3F/g3Rmqi/RpIAl5BoizAF1otcTCQSdHR8Spa04go/RklEpJUwvCls5JbLF7iOIG01i2dU8tSOwWDLUKhlpFI63B4hCFu5bGjf5FgcHTsrO2oCTucuMAuYU7c2SHWjOviLEsTS1P14mSWtOSu1U5P2BHYNXHnrO0tffHo3t36XKSgwx4zvCFUux901UtSGqs2RTRSICTNH3ta2DPryp2DEw/dvRq4fPvAhP23Lo32LM/86T22bzjjOEacdALnJvbQwmltaDFxp9YzfRxaam/PYloBO/HA70IHZtn41b4F+onV8WXNqsnHc59Rf/6oM4Blsy1hWOK8LPsnb9+WULQGs6EQL+RAxj+LTYg1TZUj87Wq9pHjXaxyVhd7IGt+JMtXp1iCp4Det+j64HHs7Z+S3dCrbgbie2UVa/gCAZ8BWTbL+kRsZe93brK83oOpIsfqUquLlVHK1/x9vjrKYDmsQJqR3i9yhi4UvM+fu4b7rvtFnJSfPmniihmZM1atKmBWzC7hHnZLZjWqPLv1gP8B90e6368SZMJ6M+XVSreL6+grKIGA/+clENdD1G9yvoyn/pAjZGw8KC/I0r/SLpJyLxrVuVXrt+1cw5H7czr3Rp7/5xXtuf+DjNq8H4dXs0vJAk1nKrHd5Iq5Jq2owUvg/yMtv4szkSf9yFNqh0Fgx3gMGOQiN0hsCqEVvhSYOFQCC5u6oClJzt0OSQwih1BRQAmmAhDEsw8MYjkHkniuoxX+MZik8hks4oUETSuR9EiHIsKvGw6CCKBzt5Hs725b0jAEVa/wDSo0hBcVuJQveP40wOXLlEsmHmDB6+PM4GFqe8gQyZ5BtskueBsMw+YBg+wZtGDdNyRwjsuW9eT90Hr3/iZVaYgHEAQAHaYbKYwfDRsLaQ8PqKZ+/w2gCDEQeCUdJeYvgIfPdH6mPGUoVwP9ILVqdZzL+sFEKLYZQoDE+zx42JgwLjQDQ4/aMAPyt80AGgHr+FqEHY4pi3p56krXx5eb13gG0GjfZwpDSKGEKSyihg5Y6+73NAPFHj0DMTXyQwfDy/v6myACAAAA') format('woff2'),
+  url('iconfont.woff?t=1567047275481') format('woff'),
+  url('iconfont.ttf?t=1567047275481') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1567047275481#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-up-circle:before {
+  content: "\e785";
+}
+
+.icon-detail:before {
+  content: "\e793";
+}
+
+.icon-user:before {
+  content: "\e7ae";
+}
+
+.icon-home:before {
+  content: "\e7c6";
+}
+
