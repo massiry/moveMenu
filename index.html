@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./font/iconfont.css">
     <style>
         html,body{
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
             overflow: hidden;
@@ -56,7 +58,7 @@
 
         #menu_btn .icon-up-circle.menu-left{
             left: 2.5vw;
-        }
+        }  
         #menu_btn .icon-home.menu-left{
             left: 11vw;
         }
@@ -116,24 +118,29 @@
                 ey=event.targetTouches[0].pageY;
             }
 
-            // 动态改变元素的上，左的距离
+            // 动态改变元素的上，左的距离 除2让拖动始终在元素中心；
             e.style.left = ex - e.offsetWidth / 2 + "px";
             e.style.top = ey - e.offsetHeight / 2 + "px";
 
             // 控制元素不能超过可视范围,且有距离小于8px时吸附在边框上
             if(e.offsetLeft<8){
+                //左
                 e.style.left = 0 + "px";
             }
             if(e.offsetTop<8){
+                //上
                 e.style.top = 0 + "px";
             }
             if(document.body.offsetWidth - e.offsetLeft - e.offsetWidth < 8){
-                e.style.left = document.body.offsetWidth - e.offsetWidth + "px";
+                //右
+                e.style.left = document.body.offsetWidth - e.offsetWidth -1 + "px";
             }
             if(window.innerHeight - e.offsetTop - e.offsetHeight < 8){
-                e.style.top = window.innerHeight - e.offsetHeight + "px";
+                //下
+                e.style.top = window.innerHeight - e.offsetHeight -1 + "px";
             }
 
+            //当移动到左侧时修改菜单的方向
             if(e.offsetLeft<document.body.offsetWidth/2){
                 for (const key of e.getElementsByTagName('i')) {
                     key.classList.add("menu-left")
@@ -167,7 +174,7 @@
     }
 
     // function menuClick(e){
-    //     //点击菜单的操作
+    //     //点击子菜单的操作
     //     for (const key of e.getElementsByTagName('i')) {
     //         key.addEventListener("click",function(event){
     //             event.stopPropagation();
