@@ -80,7 +80,8 @@
 </body>
 <script>
     
-
+    var move_x,move_y;
+    var isEqt= !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent); //判断是pc还是移动端
     ;(function (){
         var menu_btn = document.getElementById("menu_btn");
         moveTouch(menu_btn);
@@ -91,7 +92,7 @@
     function moveTouch(e){
         // 点击拖动，释放停止拖动
         var moveStart, movIng, moveEnd;
-        var isEqt= !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent); //判断是pc还是移动端
+        
         if(isEqt){
             moveStart="mousedown";
             movIng="mousemove";
@@ -103,6 +104,9 @@
         }
 
         e.addEventListener(moveStart,function(){
+            
+            move_x = e.offsetLeft;
+            move_y = e.offsetTop;
             //点击开启监听
             document.addEventListener(movIng,test);
         });
@@ -160,7 +164,13 @@
 
     function moveClick(e){
         //点击显示或关闭菜单
-        e.addEventListener("click",function(){
+        e.addEventListener("click",function(event){
+            if(isEqt){
+                //识别在pc端时，拖动和点击事件重合
+                if(move_x!=event.pageX - event.offsetX || move_y!=event.pageY - event.offsetY){
+                    return
+                }
+            }
             if(this.getElementsByTagName('i')[0].style.display == "block"){
                 for (const key of this.getElementsByTagName('i')) {
                     key.style.display = "none";
